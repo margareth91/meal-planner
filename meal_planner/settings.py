@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'planner',
     'accounts',
+    'allauth',
+    'rest_auth',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
