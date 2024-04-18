@@ -8,6 +8,7 @@ from accounts.serializers import UserSignUpSerializer
 
 class UserSignUpView(generics.GenericAPIView):
     serializer_class = UserSignUpSerializer
+    permission_classes = []
 
     def post(self, request):
         data = request.data
