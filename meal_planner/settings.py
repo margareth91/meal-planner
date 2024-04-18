@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'planner',
     'accounts',
-    'allauth',
-    'rest_auth',
     'rest_framework.authtoken',
 ]
 
