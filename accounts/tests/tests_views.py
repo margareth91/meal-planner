@@ -25,6 +25,12 @@ class UserSignUpViewTest(APITestCase):
         response = self.client.post(reverse("signup"), new_user)
         self.assertEqual(response.status_code, 201)
 
+    def test_new_user_creation_failure(self):
+        new_user = {"username": "user", "password": "password"}
+        self.client.login(email=self.EMAIL, password=self.PASSWORD)
+        response = self.client.post(reverse("signup"), new_user)
+        self.assertEqual(response.status_code, 400)
+
 
 class UserLoginViewTest(APITestCase):
     EMAIL = "user@app.com"
