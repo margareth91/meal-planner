@@ -24,3 +24,19 @@ class UserSignUpViewTest(APITestCase):
         self.client.login(email=self.EMAIL, password=self.PASSWORD)
         response = self.client.post(reverse("signup"), new_user)
         self.assertEqual(response.status_code, 201)
+
+
+class UserLoginViewTest(APITestCase):
+    EMAIL = "user@app.com"
+    USERNAME = "User"
+    PASSWORD = "password"
+
+    def setUp(self):
+        self.user = User.objects.create(
+            email=self.EMAIL, username=self.USERNAME, password=self.PASSWORD
+        )
+
+    def test_login_successfully(self):
+        request_text = {"email": self.EMAIL, "password": self.PASSWORD}
+        response = self.client.post(reverse("login"), request_text)
+        self.assertEqual(response.status_code, 200)
