@@ -1,8 +1,10 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from planner.models import Meal
 from planner.serializers import MealSerializer
+
+User = get_user_model()
 
 
 class MealSerializerTest(TestCase):
