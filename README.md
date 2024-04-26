@@ -6,6 +6,7 @@ Simple back-end for web app, created with Django and Django REST framework.
 * Main technologies
 * Setup
 * Status
+* Sources
 
 ## General info
 This web app allows to plan a menu. The user can list, create, update and delete a meal.
@@ -20,4 +21,7 @@ Then, clone this repo to your desktop, activate virtual env and install all depe
 Once the dependencies are installed, run `py manage.py runserver` to start the web app on your localhost.
 
 ## Status
-App building still in progress. Currently there is no possibility to create an account as well as to assign a meal to specific day yet.
+App building still in progress.
+
+## Sources
+"Accounts" part of this app is created based on Ssali Jonathan tutorial "Learn Django REST Framework", published on [youtube](https://www.youtube.com/watch?v=Df7YBcLfPKg&list=PLEt8Tae2spYlosWRH9JDpKNxzb3bSOJGx&ab_channel=SsaliJonathan).
