@@ -9,11 +9,15 @@ User = get_user_model()
 class MealModelTest(TestCase):
     MEAL_NAME = "Meal"
     MEAL_DESCRIPTION = "Meal description"
+    WEEKDAY = "1"
 
     def setUp(self):
         self.author = User.objects.create()
         Meal.objects.create(
-            author=self.author, name=self.MEAL_NAME, description=self.MEAL_DESCRIPTION
+            author=self.author,
+            name=self.MEAL_NAME,
+            weekday=self.WEEKDAY,
+            description=self.MEAL_DESCRIPTION,
         )
         self.meal = Meal.objects.get(id=1)
 
@@ -22,6 +26,9 @@ class MealModelTest(TestCase):
 
     def test_meal_name(self):
         self.assertEqual(self.meal.name, self.MEAL_NAME)
+
+    def test_meal_weekday(self):
+        self.assertEqual(self.meal.weekday, self.WEEKDAY)
 
     def test_meal_description(self):
         self.assertEqual(self.meal.description, self.MEAL_DESCRIPTION)
