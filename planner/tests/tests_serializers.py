@@ -10,18 +10,23 @@ User = get_user_model()
 class MealSerializerTest(TestCase):
     MEAL_NAME = "Meal"
     MEAL_DESCRIPTION = "Meal description"
+    WEEKDAY = "1"
 
     def setUp(self):
         self.author = User.objects.create()
         self.meal = Meal.objects.create(
-            author=self.author, name=self.MEAL_NAME, description=self.MEAL_DESCRIPTION
+            author=self.author,
+            name=self.MEAL_NAME,
+            weekday=self.WEEKDAY,
+            description=self.MEAL_DESCRIPTION,
         )
         self.meal_serializer = MealSerializer(instance=self.meal)
         self.meal_serializer_data = self.meal_serializer.data
 
     def test_contains_expected_fields(self):
         self.assertEqual(
-            self.meal_serializer_data.keys(), {"id", "author", "name", "description"}
+            self.meal_serializer_data.keys(),
+            {"id", "author", "weekday", "name", "description"},
         )
 
     def test_id_field(self):
@@ -29,6 +34,9 @@ class MealSerializerTest(TestCase):
 
     def test_author_content(self):
         self.assertEqual(self.meal_serializer_data["author"], self.meal.author.id)
+
+    def test_weekday_content(self):
+        self.assertEqual(self.meal_serializer_data["weekday"], self.meal.weekday)
 
     def test_name_content(self):
         self.assertEqual(self.meal_serializer_data["name"], self.MEAL_NAME)
